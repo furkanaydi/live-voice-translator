@@ -2,7 +2,7 @@
 Real-time voice translation from spoken language to Turkish using speech recognition and Google Translate.
 ## Requirements
 
-- **Python 3.8+** (tested on Python 3.8 or higher).
+- **Python 3.8 or newer** (tested on Python 3.8 and 3.13.3)3)
 - A working **microphone** to capture audio from your computer.
 - An **internet connection** is required for translation via Google Translate.
 
@@ -28,7 +28,9 @@ Real-time voice translation from spoken language to Turkish using speech recogni
 3. **Install the required Python packages** using `pip`:
 
    ```bash
-   pip install SpeechRecognition googletrans==4.0.0rc1 PyAudio
+pip install SpeechRecognition
+pip install googletrans==4.0.0-rc1
+pip install PyAudio
    ```
 
    - On **Linux**, you may need to install PortAudio development headers before installing PyAudio:
@@ -38,7 +40,7 @@ Real-time voice translation from spoken language to Turkish using speech recogni
 
 ## Usage
 
-Run the script from the repository root and speak into your microphone; the recognized speech and its translation to Turkish will be printed to the console:
+Run the script from the repository root. After starting, a white GUI window will open. Speak into your microphone and the recognized English speech will be translated into Turkish and displayed in this window:
 
 ```bash
 python voice_translator.py
@@ -50,6 +52,8 @@ Press `Ctrl+C` at any time to stop listening and exit the program.
 
 - This script uses Google’s unofficial translation service via the `googletrans` library. It may be subject to rate limits or reliability issues. For production use, consider using an official translation API.
 - Make sure your microphone is selected as the default input device on your system. You can adjust the ambient noise calibration in the code if needed.
+- - When using Python 3.13, install `googletrans` version `4.0.0-rc1` (with the hyphen). Other pre-release versions like `4.0.0rc1` may cause import errors.
+
 
 ## License
 
