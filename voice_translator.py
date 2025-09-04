@@ -1,6 +1,22 @@
 import speech_recognition as sr
 from googletrans import Translator
 import tkinter as tk
+import pyaudio
+
+def get_loopback_device_index():
+    """Return device index for system audio loopback if available (e.g. Stereo Mix or Loopback)."""
+    p = pyaudio.PyAudio()
+    loop_idx = None
+    for i in range(p.get_device_count()):
+        dev = p.get_device_info_by_index(i)
+        name = dev.get('name', '').lower()
+        if 'stereo mix' in name or 'loopback' in name:
+            loop_idx = i
+            break
+    p.terminate()
+    return loop_idx
+
+
 import threading
 
 
@@ -8,7 +24,12 @@ def listen_and_translate(update_callback, src_lang="en", dest_lang="tr"):
     """Listen to microphone input, translate it, and call update_callback with the result."""
     recognizer = sr.Recognizer()
     translator = Translator()
-    mic = sr.Microphone()
+    device_index = get_loopback_device_index()
+    if device_index is not None:
+        mic = sr.Microphone(device_index=device_index)
+    else:
+        mic = sr.Microphone()
+
 
     with mic as source:
         recognizer.adjust_for_ambient_noise(source)
