@@ -2,7 +2,8 @@
 Real-time voice translation from spoken language to Turkish using speech recognition and Google Translate.
 ## Requirements
 
-- **Python 3.8 or newer** (tested on Python 3.8 and 3.13.3)3)
+- **Python 3.8 or newer** (tested on Python 3.8 and 3.13.3)
+
 - A working **microphone** to capture audio from your computer.
 - An **internet connection** is required for translation via Google Translate.
 
