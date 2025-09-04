@@ -26,7 +26,7 @@ Real-time voice translation from spoken language to Turkish using speech recogni
 3. **Install the required Python packages** using pip:
 
     pip install SpeechRecognition
-    pip install googletrans==4.0.0-rc1
+pip install googletrans==4.0.0-rc1
     pip install pyaudio
 
     If you encounter errors installing **PyAudio**:
